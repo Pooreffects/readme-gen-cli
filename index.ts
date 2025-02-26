@@ -1,1 +1,2 @@
-console.log("Hello via Bun!");
+import { runCLI } from './src/cli';
+runCLI();
