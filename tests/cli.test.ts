@@ -1,17 +1,19 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import inquirer from 'inquirer';
 import { writeFile } from 'fs/promises';
-import { runCLI } from './cli';
-import { generateReadme } from './generator';
+import { runCLI } from '../src/cli';
+import { generateReadme } from '../src/generator';
 
-// 🔹 Mock dependencies efficiently
+// 🔹 Mock dependencies
 vi.mock('inquirer', () => ({
-  default: { prompt: vi.fn() }, // Fix for ESM default import
+  default: { prompt: vi.fn() },
 }));
+
 vi.mock('fs/promises', () => ({
   writeFile: vi.fn(),
 }));
-vi.mock('./generator', () => ({
+
+vi.mock('../src/generator', () => ({
   generateReadme: vi.fn(),
 }));
 
@@ -34,13 +36,11 @@ describe('CLI', () => {
     };
 
     // 🔹 Mock Inquirer responses
-    vi.mocked(inquirer.prompt).mockResolvedValueOnce(mockAnswers);
-    vi.mocked(inquirer.prompt).mockResolvedValueOnce({ confirmSave: true });
+    (inquirer.prompt as any).mockResolvedValueOnce(mockAnswers);
+    (inquirer.prompt as any).mockResolvedValueOnce({ confirmSave: true });
 
     // 🔹 Mock README generation
-    vi.mocked(generateReadme).mockReturnValue(
-      '# Test Project\nA sample project'
-    );
+    (generateReadme as any).mockReturnValue('# Test Project\nA sample project');
 
     await runCLI();
 

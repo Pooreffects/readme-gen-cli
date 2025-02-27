@@ -1,16 +1,21 @@
-import figlet from 'figlet';
+import { render } from 'cfonts';
 import kleur from 'kleur';
 
 export function showBanner() {
-  figlet(
-    'README DD',
-    { font: 'Mini' },
-    (err: Error | null, data: string | undefined) => {
-      if (err) {
-        console.error(kleur.red('Error generating ASCII text:'), err);
-        return;
-      }
-      if (data) console.log(kleur.cyan(data));
-    }
-  );
+  try {
+    const output = render('Readme.dd', {
+      font: 'block',
+      colors: ['cyan'],
+      align: 'left',
+      gradient: ['gray', 'cyan'],
+      transitionGradient: true,
+      lineSpacing: 0,
+      env: 'node',
+      maxLength: '35',
+      raw: true,
+    });
+    console.log(String(output) || output);
+  } catch (err) {
+    console.error(kleur.red('Error generating banner:'), err);
+  }
 }
