@@ -2,15 +2,17 @@
   "name": "readme-gen-cli",
   "version": "1.0.0",
   "description": "Generate custom README.md files easily from CLI",
-  "main": "bin/main.js",
+  "main": "bin/index.js",
   "bin": {
-    "readme-gen": "./bin/main.js"
+    "readme-gen": "./bin/index.js"
   },
   "author": "Pooreffects",
   "type": "module",
   "license": "MIT",
+  "private": false,
   "files": [
-    "bin/"
+    "bin/",
+    "src/"
   ],
   "devDependencies": {
     "@types/bun": "latest",
@@ -27,15 +29,15 @@
   },
   "scripts": {
     "dev": "bun run main.ts",
-    "build": "bun build main.ts --outdir bin --target bun --minify --external inquirer --external kleur --external cfonts",
-    "start": "bun run bin/main.js",
+    "build": "bun build main.ts --outfile bin/index.js --minify --target node --external kleur --external inquirer",
+    "start": "node bin/index.js",
     "preview": "bun run main.ts --preview",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "prepublishOnly": "bun build main.ts --outfile bin/index.js --minify --target node"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "prepublishOnly": "bun run build"
+  }
 }

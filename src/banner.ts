@@ -14,7 +14,7 @@ export function showBanner() {
       maxLength: '35',
       raw: true,
     });
-    console.log(String(output) || output);
+    console.log(output.string || output);
   } catch (err) {
     console.error(kleur.red('Error generating banner:'), err);
   }
