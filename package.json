@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "bun run main.ts",
-    "build": "bun build main.ts --outfile bin/index.js --minify --target node --external kleur inquirer cfonts",
+    "build": "bun build main.ts --outdir bin --minify --target node --external kleur --external inquirer --external cfonts",
     "start": "node bin/index.js",
     "preview": "bun run main.ts --preview",
     "test": "vitest run",
