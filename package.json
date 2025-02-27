@@ -4,15 +4,13 @@
   "description": "Generate custom README.md files easily from CLI",
   "main": "bin/index.js",
   "bin": {
-    "readme-gen": "./bin/index.js"
+    "readme-gen-cli": "./bin/index.js"
   },
   "author": "Pooreffects",
   "type": "module",
   "license": "MIT",
-  "private": false,
   "files": [
-    "bin/",
-    "src/"
+    "bin/"
   ],
   "devDependencies": {
     "@types/bun": "latest",
@@ -30,7 +28,7 @@
   },
   "scripts": {
     "dev": "bun run main.ts",
-    "build": "bun build main.ts --outfile bin/index.js --minify --target node --external kleur --external inquirer",
+    "build": "bun build main.ts --outfile bin/index.js --minify --target node --external kleur inquirer cfonts",
     "start": "node bin/index.js",
     "preview": "bun run main.ts --preview",
     "test": "vitest run",
