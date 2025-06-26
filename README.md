@@ -35,7 +35,7 @@ To launch the interactive prompt:
 readme-gen
 ```
 
-Follow the guided questions to generate your README.md file automatically.
+You can follow the guided questions to generate your README.md file automatically.
 
 ### Example Output
 
@@ -93,12 +93,25 @@ bun build main.ts --outfile main.js
 ```bash
 bun test
 ```
+## 🚧 Upcoming Improvements & TODOs
 
-## 🎯 Roadmap
-
+### 🏗️ Core Features
+- [ ] **Template system** (`--template=react|python|go`)  
+- [ ] **GitHub integration** (auto-fetch license/languages)  
+- [ ] **Custom output paths** (`--output=docs/README.md`)  
 - [ ] AI-powered README generation with OpenAI API
 - [ ] Custom templates support
 - [ ] Badge generators
+
+### 🩹 Health Checks
+- [ ] **Input validation** (required fields, format checks)  
+- [ ] **File system safety** (write permissions, fallbacks)  
+- [ ] **Unit tests** (Jest + mocked I/O)  
+
+### ✨ Quality of Life
+- [ ] **Better `--help`** (list all options)  
+- [ ] **Version flag** (`--version`)  
+- [ ] **Demo GIF** in docs  
 
 ## 🤝 Contributing
 
